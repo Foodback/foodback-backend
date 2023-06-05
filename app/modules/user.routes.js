@@ -1,12 +1,11 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const { 
-  addUser
-} = require("./user.controller")
+const { addUser, editUser } = require("./user.controller");
 
-const { authMiddleware } = require("../middleware/auth.middleware")
+const { authMiddleware } = require("../middleware/auth.middleware");
 
-router.post("/profile", addUser)
+router.post("/profile", addUser);
+router.put("/profile/:id", editUser);
 
-module.exports = router
+module.exports = router;
