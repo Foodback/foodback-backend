@@ -19,7 +19,7 @@ module.exports = {
         onDelete: "cascade",
       },
       label: {
-        type: Sequelize.ENUM("breakfast", "lunch", "dinner")
+        type: Sequelize.ENUM("breakfast", "lunch", "dinner", "snack")
       },
       name: {
         type: Sequelize.STRING

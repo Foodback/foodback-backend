@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   DiaryMeal.init({
     diaryId: DataTypes.INTEGER,
-    label: DataTypes.ENUM("breakfast", "lunch", "dinner"),
+    label: DataTypes.ENUM("breakfast", "lunch", "dinner", "snack"),
     name: DataTypes.STRING,
     amount: DataTypes.FLOAT,
     calory: DataTypes.FLOAT

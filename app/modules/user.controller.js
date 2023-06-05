@@ -34,11 +34,11 @@ exports.addUser = async (req, res) => {
     await User.create({
       username, 
       email, 
-      gender,
+      gender: gender.toLowerCase(),
       height,
       weight,
-      activity,
-      goal,
+      activity: activity.toLowerCase(),
+      goal: goal.toLowerCase(),
       target
     })
 
@@ -48,7 +48,7 @@ exports.addUser = async (req, res) => {
   }catch(e){
     console.log(e)
     return res.status(500).send({
-      message: "Something went wrong"
+      message: e.errors?.[0]?.message ?? "Failed to create user"
     })
   }
 }
