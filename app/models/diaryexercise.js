@@ -8,21 +8,21 @@ module.exports = (sequelize, DataTypes) => {
 		 * The `models/index` file will call this method automatically.
 		 */
 		static associate(models) {
-			DiaryExercise.belongsTo(models.Diary, {
-				foreignKey: "diaryId",
-				as: "Diary",
+			DiaryExercise.belongsTo(models.User, {
+				foreignKey: "userId",
+				as: "User",
 			});
 		}
 	}
 	DiaryExercise.init(
 		{
 			name: DataTypes.STRING,
-			diaryId: DataTypes.INTEGER,
+			userId: DataTypes.INTEGER,
 			calories: DataTypes.FLOAT,
 			duration: DataTypes.INTEGER,
 			sets: DataTypes.INTEGER,
 			repetition: DataTypes.INTEGER,
-			date: DataTypes.DATE,
+			date: DataTypes.DATEONLY,
 		},
 		{
 			sequelize,

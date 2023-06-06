@@ -9,10 +9,11 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			diaryId: {
+			userId: {
+        allowNull: false,
 				type: Sequelize.INTEGER,
 				references: {
-					model: "Diaries",
+					model: "Users",
 					key: "id",
 				},
 				onUpdate: "cascade",
@@ -34,7 +35,7 @@ module.exports = {
 				type: Sequelize.INTEGER,
 			},
 			date: {
-				type: Sequelize.DATE,
+				type: Sequelize.DATEONLY,
 			},
 			createdAt: {
 				allowNull: false,
