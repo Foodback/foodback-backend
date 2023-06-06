@@ -21,7 +21,6 @@ function authMiddleware(request, response, next){
     .verifyIdToken(token)
     .then((decodedToken)=>{
       const email = decodedToken.email
-      console.log(decodedToken)
       require.user = {
         email
       }
