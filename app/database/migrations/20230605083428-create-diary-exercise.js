@@ -21,7 +21,7 @@ module.exports = {
 			name: {
 				type: Sequelize.STRING,
 			},
-			calory: {
+			calories: {
 				type: Sequelize.FLOAT,
 			},
 			duration: {
@@ -32,6 +32,9 @@ module.exports = {
 			},
 			repetition: {
 				type: Sequelize.INTEGER,
+			},
+			date: {
+				type: Sequelize.DATE,
 			},
 			createdAt: {
 				allowNull: false,

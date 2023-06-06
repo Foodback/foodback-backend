@@ -18,10 +18,11 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			name: DataTypes.STRING,
 			diaryId: DataTypes.INTEGER,
-			calory: DataTypes.FLOAT,
+			calories: DataTypes.FLOAT,
 			duration: DataTypes.INTEGER,
 			sets: DataTypes.INTEGER,
 			repetition: DataTypes.INTEGER,
+			date: DataTypes.DATE,
 		},
 		{
 			sequelize,
