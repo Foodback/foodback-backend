@@ -21,11 +21,11 @@ function authMiddleware(request, response, next){
     .verifyIdToken(token)
     .then((decodedToken)=>{
       const email = decodedToken.email
-      require.user = {
+      request.user = {
         email
       }
+      next()
     })
-    .then(()=>next())
     .catch(()=> response.send({
       message: "Could not authorize"
     }).status(403))

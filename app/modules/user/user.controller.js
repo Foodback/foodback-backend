@@ -147,3 +147,41 @@ exports.getHomeData = async (req, res) => {
 		});
 	}
 }
+
+exports.getMyProfile = async (req, res) => {
+  try{
+    const { email } = req.user
+    const user = await User.findOne({
+      where: {
+        email: email
+      },
+      attributes: ["id", "username", "email", "gender", "height", "weight", "activity", "goal", "target"]
+    })
+
+    if(!user){
+      return res.status(404).send({
+        message: "User not found"
+      })
+    }
+
+    return res.status(200).send({
+      message: "Success get profile data",
+      data: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        gender: user.gender,
+        height: user.height,
+        weight: user.weight,
+        activity: user.activity,
+        goal: user.goal,
+        target: user.target,
+      }
+    })
+  }catch (e){
+		console.log(e);
+		return res.status(500).send({
+			message: e.errors?.[0]?.message ?? "Failed to get profile data",
+		});
+  }
+}

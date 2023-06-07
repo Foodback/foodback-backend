@@ -6,9 +6,9 @@ const {
 	getDiaryMeal,
 } = require("./diarymeal.controller");
 
-const { authMiddleware } = require("../../middleware/auth.middleware");
+const authMiddleware = require("../../middleware/auth.middleware");
 
-router.post("/diary/meal", addDiaryMeal);
-router.get("/diary/meal", getDiaryMeal);
+router.post("/diary/meal", authMiddleware, addDiaryMeal);
+router.get("/diary/meal", authMiddleware, getDiaryMeal);
 
 module.exports = router;

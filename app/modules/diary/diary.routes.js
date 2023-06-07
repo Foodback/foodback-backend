@@ -6,8 +6,8 @@ const {
   getDiary
 } = require("./diary.controller");
 
-const { authMiddleware } = require("../../middleware/auth.middleware");
+const authMiddleware = require("../../middleware/auth.middleware");
 
-router.get("/diary", getDiary);
+router.get("/diary", authMiddleware, getDiary);
 
 module.exports = router;

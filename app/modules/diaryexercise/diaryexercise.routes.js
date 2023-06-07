@@ -6,9 +6,9 @@ const {
 	getDiaryExercise,
 } = require("./diaryexercise.controller");
 
-const { authMiddleware } = require("../../middleware/auth.middleware");
+const authMiddleware = require("../../middleware/auth.middleware");
 
-router.post("/diary/exercise", addDiaryExercise);
-router.get("/diary/exercise", getDiaryExercise);
+router.post("/diary/exercise", authMiddleware, addDiaryExercise);
+router.get("/diary/exercise", authMiddleware, getDiaryExercise);
 
 module.exports = router;
