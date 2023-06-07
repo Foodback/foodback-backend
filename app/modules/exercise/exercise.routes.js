@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { getFood } = require("./food.controller");
+const { getExercise } = require("./exercise.controller");
 
 const authMiddleware = require("../../middleware/auth.middleware");
 
-router.get("/food", authMiddleware, getFood);
+router.get("/food", authMiddleware, getExercise);
 
 module.exports = router;

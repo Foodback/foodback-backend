@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const userRoutes = require("./app/modules/user/user.routes");
 const foodRoutes = require("./app/modules/food/food.routes");
+const exerciseRoutes = require("./app/modules/exercise/exercise.routes");
 const diaryMealRoutes = require("./app/modules/diarymeal/diarymeal.routes");
 const diaryExerciseRoutes = require("./app/modules/diaryexercise/diaryexercise.routes");
 const diaryRoutes = require("./app/modules/diary/diary.routes");
@@ -23,6 +24,7 @@ router.use(diaryMealRoutes);
 router.use(diaryExerciseRoutes);
 router.use(diaryRoutes);
 router.use(foodRoutes);
+router.use(exerciseRoutes);
 
 app.use("/api", router);
 
