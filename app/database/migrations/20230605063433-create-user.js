@@ -29,7 +29,7 @@ module.exports = {
 				type: Sequelize.INTEGER,
 			},
 			activity: {
-				type: Sequelize.ENUM("light", "moderate", "active", "very active"),
+				type: Sequelize.ENUM("light", "moderate", "active", "very actiave"),
 			},
 			goal: {
 				type: Sequelize.ENUM("gain", "maintain", "loss"),
