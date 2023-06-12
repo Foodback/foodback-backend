@@ -91,11 +91,12 @@ exports.getHomeData = async (req, res) => {
     let today = new Date()
     today = today.toISOString().split('T')[0]
 
+    const { email } = req.user
 		const user = await User.findOne({
 			where: {
-				id: 1, // change to corresponding id
+        email: email,
 			},
-      attributes: ["target", "goal"]
+      attributes: ["id", "target", "goal"]
 		});
 
 		if (!user) {
@@ -109,7 +110,7 @@ exports.getHomeData = async (req, res) => {
       attributes: [sequelize.fn('SUM', sequelize.col('calories'))],
       where:{
         [Op.and]: {
-          userId: 1, // change to corresponding id
+          userId: user.id,
           date: {
             [Op.between]: [today, today]
           }
@@ -122,7 +123,7 @@ exports.getHomeData = async (req, res) => {
       attributes: [sequelize.fn('SUM', sequelize.col('calories'))],
       where:{
         [Op.and]: {
-          userId: 1, // change to corresponding id
+          userId: user.id,
           date: {
             [Op.between]: [today, today]
           }

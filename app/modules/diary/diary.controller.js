@@ -2,6 +2,7 @@ const models = require("../../models");
 const { Op } = require("sequelize");
 const DiaryMeal = models.DiaryMeal;
 const DiaryExercise = models.DiaryExercise;
+const User = models.User
 
 exports.getDiary = async (req, res) => {
   const {
@@ -15,10 +16,18 @@ exports.getDiary = async (req, res) => {
     })
   }
   try {
+    const { email } = req.user
+    const user = await User.findOne({
+      where: {
+        email: email
+      },
+      attributes: ["id"]
+    })
+
    const mealsData = await DiaryMeal.findAll({
       where: {
         [Op.and]: {
-          userId: 1,// change to corresponding id
+          userId: user.id,
           date: {
             [Op.between]: [start_date, end_date]
           }
@@ -29,7 +38,7 @@ exports.getDiary = async (req, res) => {
     const exerciseData = await DiaryExercise.findAll({
       where: {
         [Op.and]: {
-          userId: 1,// change to corresponding id
+          userId: user.id,
           date: {
             [Op.between]: [start_date, end_date]
           }
