@@ -7,7 +7,7 @@ const DiaryMeal = models.DiaryMeal
 const DiaryExercise = models.DiaryExercise
 
 exports.addUser = async (req, res) => {
-	const { username, email, gender, height, weight, activity, goal, target } =
+	const { username, email, gender, height, weight, activity, goal, target, age } =
 		req.body;
 
 	try {
@@ -32,6 +32,7 @@ exports.addUser = async (req, res) => {
 			activity: activity.toLowerCase(),
 			goal: goal.toLowerCase(),
 			target,
+      age,
 		});
 
 		return res.status(201).send({
@@ -45,7 +46,7 @@ exports.addUser = async (req, res) => {
 	}
 };
 exports.editUser = async (req, res) => {
-	const { username, email, gender, height, weight, activity, goal, target } =
+	const { username, email, gender, height, weight, activity, goal, target, age } =
 		req.body;
 	const userId = req.params.id;
 	try {
@@ -71,6 +72,7 @@ exports.editUser = async (req, res) => {
 				activity: activity.toLowerCase(),
 				goal: goal.toLowerCase(),
 				target,
+        age,
 			},
 			{ where: { id: userId } }
 		);
@@ -156,7 +158,7 @@ exports.getMyProfile = async (req, res) => {
       where: {
         email: email
       },
-      attributes: ["id", "username", "email", "gender", "height", "weight", "activity", "goal", "target"]
+      attributes: ["id", "username", "email", "gender", "height", "weight", "activity", "goal", "target", "age"]
     })
 
     if(!user){
@@ -177,6 +179,7 @@ exports.getMyProfile = async (req, res) => {
         activity: user.activity,
         goal: user.goal,
         target: user.target,
+        age: user.age,
       }
     })
   }catch (e){

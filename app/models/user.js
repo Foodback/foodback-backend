@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 			activity: DataTypes.ENUM("light", "moderate", "active", "very active"),
 			goal: DataTypes.ENUM("gain", "maintain", "loss"),
 			target: DataTypes.INTEGER,
+			age: DataTypes.INTEGER,
 		},
 		{
 			sequelize,
