@@ -27,6 +27,9 @@ router.use(foodRoutes);
 router.use(exerciseRoutes);
 
 app.use("/api", router);
+app.get('/', function(req, res){
+  return res.send("Welcome to Foodback")
+})
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
